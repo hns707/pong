@@ -1,0 +1,24 @@
+body{
+
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    font-size: 50px;
+    font-style: oblique;
+
+}
+
+#terrain{
+    border: 1px solid white;
+    width: 800px;
+    height: 400px;
+}
+
+#balle{
+
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 100%;
+
+}
