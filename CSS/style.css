@@ -5,6 +5,7 @@ body{
     font-family: monospace;
     font-size: 50px;
     font-style: oblique;
+	text-align: center;
 
 }
 
@@ -12,10 +13,13 @@ body{
     border: 1px solid white;
     width: 800px;
     height: 400px;
+    position: relative;
 }
 
 #balle{
-
+    position: relative;
+    top: 50%;
+    left: 50%;
     width: 20px;
     height: 20px;
     background-color: white;
