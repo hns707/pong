@@ -1,28 +1,35 @@
-body{
 
-    background-color: black;
-    color: white;
+body{
+    background-color: #000;
+    color: #fff;
     font-family: monospace;
-    font-size: 50px;
-    font-style: oblique;
-	text-align: center;
 
 }
 
 #terrain{
-    border: 1px solid white;
-    width: 800px;
-    height: 400px;
     position: relative;
+    border: 1px solid white;
+    
+    width:800px;
+    height:400px;
 }
 
 #balle{
-    position: relative;
+    position: absolute;
     top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    background-color: white;
+    left: 50%;  
+    width:20px;
+    height:20px;
     border-radius: 100%;
+    background-color: white; 
+    
+}
 
+body{    
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
