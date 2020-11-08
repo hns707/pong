@@ -6,6 +6,8 @@ body{
 
 }
 
+/** Paramètres du terrain **/
+
 #terrain{
     position: relative;
     border: 1px solid white;
@@ -13,6 +15,8 @@ body{
     width:800px;
     height:400px;
 }
+
+/** Paramètres de la balle **/
 
 #balle{
     position: absolute;
@@ -24,6 +28,8 @@ body{
     background-color: white; 
     
 }
+
+/** Centrer le contenu **/
 
 body{    
     display: flex;
