@@ -7,8 +7,7 @@ let haut=parseInt($("#balle").css("top"));
 //Script déplacement de la balle
 setInterval(function(){
     gauche = gauche + 1;
-    haut = haut + 0.5;
-    //Affiche le résultat de I dans le titre de page toutes les 10 millisecondes 
+    haut = haut + 0.5; 
     $("#balle").css("left",gauche); 
     $("#balle").css("top",haut);
 
