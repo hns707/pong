@@ -16,6 +16,10 @@ body{
     height:400px;
 }
 
+.vert{
+    border-color: #0f0 !important;
+}
+
 /** Paramètres de la balle **/
 
 #balle{
