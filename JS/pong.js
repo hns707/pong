@@ -27,6 +27,8 @@ class Balle{
         this.hauteur=$element.height();
         this.posx=parseInt($("#balle").css("top"));
         this.posy=parseInt($("#balle").css("left"));
+        this.speedx=4;
+        this.speedy=2
         this.sensx=1;
         this.sensy=1;
         this.diametre=20;
@@ -34,8 +36,8 @@ class Balle{
     }
     maj(){
         // Vitesse de déplacement
-        this.posx = this.posx + 4 * this.sensx;
-        this.posy = this.posy + 2 * this.sensy;
+        this.posx = this.posx + this.speedx * this.sensx;
+        this.posy = this.posy + this.speedy * this.sensy;
         // Actualisation du CSS
         $("#balle").css("left",this.posx); 
         $("#balle").css("top",this.posy);
@@ -90,9 +92,14 @@ class Balle{
     }
 }
 
+//Création d'un terrian + balle
 let terrain=new Terrain($("#terrain"));
 let balle=new Balle($("#balle"));
+
+// Position et sens de départ de la balle aléatoire
 balle.posx = Math.random() * terrain.largeur;
 balle.posy = Math.random() * terrain.hauteur;
+balle.sensx = balle.sensx * (Math.random() < 0.5) ? -1 : 1;
+balle.sensy = balle.sensy * (Math.random() < 0.5) ? -1 : 1;
 console.log(terrain);
 
