@@ -10,14 +10,22 @@ body{
 
 #terrain{
     position: relative;
-    border: 1px solid white;
+    border: 1px solid #000;
+	border-top-color: #fff;
+    border-bottom-color: #fff;
     
     width:800px;
     height:400px;
 }
 
 .vert{
-    border-color: #0f0 !important;
+	border-top-color: #0f0 !important;
+    border-bottom-color: #0f0 !important;
+}
+
+.rouge{
+	border-top-color: #f00 !important;
+    border-bottom-color: #f00 !important;
 }
 
 /** Paramètres de la balle **/
@@ -26,11 +34,28 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;  
-    width:20px;
-    height:20px;
+    width:15px;
+    height:15px;
     border-radius: 100%;
     background-color: white; 
     
+}
+
+.raquette{
+	position: absolute;
+    width:10px;
+    height:75px;
+    background-color: white;
+}
+
+#rgauche{
+    left: 0;
+	top: 50%;
+}
+
+#rdroite{
+    left: 0;
+	top: 50%;
 }
 
 /** Centrer le contenu **/
