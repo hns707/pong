@@ -7,12 +7,13 @@ let haut=parseInt($("#balle").css("top"));*/
 
 //Script déplacement de la balle
 setInterval(function(){
-
-    balle.maj(); 
 	
-	raquetteGauche.rebords(), raquetteGauche.majGCSS();
-	raquetteDroite.rebords(), raquetteDroite.majDCSS();
+	balle.collision();
+    balle.bouge(); 
 	
+	
+	raquetteGauche.bouge(), raquetteGauche.majGCSS(), raquetteGauche.rebondG();
+	raquetteDroite.bouge(), raquetteDroite.majDCSS(), raquetteDroite.rebondD();
 	
 }, 10);
 
@@ -31,11 +32,11 @@ class Raquette{
         this.hauteur=$element.height();
         this.posx=parseInt($element.css("left"));
         this.posy=parseInt($element.css("top"));
-        this.speedy=2;
+        this.speedy=4;
         this.sensy=1;
 	}
 	
-	rebords(){
+	bouge(){
 		//Collisions terrain
 		 if (this.posy > terrain.hauteur - this.hauteur){
 			this.sensy = -1;
@@ -44,7 +45,9 @@ class Raquette{
 			 this.sensy = 1;
 		 }
 		 this.posy = this.posy + this.speedy * this.sensy;
+		 
 	}
+	
 	
 	 majGCSS(){
         // Actualisation du CSS
@@ -57,6 +60,33 @@ class Raquette{
         $("#rdroite").css("left",this.posx); 
         $("#rdroite").css("top",this.posy);
 	 }
+	 
+	 rebondG(){
+		 
+		 if(this.posx < balle.posx && balle.posx < this.posx + this.largeur){
+				if(this.posy <= balle.posy && balle.posy <= this.posy + this.hauteur){
+					console.log("bonk G");
+					this.$element.addClass("rtouche");
+					setTimeout(function(){raquetteGauche.$element.removeClass("rtouche")},100);
+					balle.posx += balle.diametre / 2;
+					balle.sensx = 1;
+				}
+		 }
+	}
+	
+	rebondD(){
+		 
+		 if(this.posx - balle.diametre < balle.posx && balle.posx < this.posx + this.largeur){
+				if(this.posy <= balle.posy && balle.posy <= this.posy + this.hauteur){
+					console.log("bonk D");
+					this.$element.addClass("rtouche");
+					setTimeout(function(){raquetteDroite.$element.removeClass("rtouche")},100);
+					balle.posx -= balle.diametre / 2;
+					balle.sensx = -1;
+				}
+		 }
+	}
+	 
  }
 
 class Balle{
@@ -64,8 +94,8 @@ class Balle{
         this.$element=$element
         this.largeur=$element.width();
         this.hauteur=$element.height();
-        this.posx=parseInt($("#balle").css("top"));
-        this.posy=parseInt($("#balle").css("left"));
+        this.posy=parseInt($("#balle").css("top"));
+        this.posx=parseInt($("#balle").css("left"));
         this.speedx=4;
         this.speedy=2
         this.sensx=1;
@@ -75,58 +105,42 @@ class Balle{
     }
 	
 	
-    maj(){
+    bouge(){
         // Vitesse de déplacement
         this.posx = this.posx + this.speedx * this.sensx;
         this.posy = this.posy + this.speedy * this.sensy;
         // Actualisation du CSS
         $("#balle").css("left",this.posx); 
         $("#balle").css("top",this.posy);
-        
-        // Collisions
+	}
+	collision(){
+        // Collisions avec le terrain
         if(this.posx > terrain.largeur - this.diametre){
             this.posx = terrain.largeur - this.diametre;
             this.sensx = -1;
             terrain.$element.addClass("rouge");
-            setTimeout(
-                function(){
-                    terrain.$element.removeClass("rouge")
-                },1000
-            );
-            
+            setTimeout(function(){terrain.$element.removeClass("rouge")},1000 );
         }
     
         else if(this.posx < 0 ){
             this.posx = 0;
             this.sensx = 1;
             terrain.$element.addClass("rouge");
-            setTimeout(
-                function(){
-                    terrain.$element.removeClass("rouge")
-                },1000
-            );
+            setTimeout(function(){terrain.$element.removeClass("rouge")},1000);
         }
     
         else if(this.posy > terrain.hauteur - this.diametre){
             this.posy = terrain.hauteur - this.diametre;
             this.sensy = -1;
             terrain.$element.addClass("vert");
-            setTimeout(
-                function(){
-                    terrain.$element.removeClass("vert")
-                },100
-            );
+            setTimeout(function(){terrain.$element.removeClass("vert")},100);
         }
     
         else if(this.posy < 0){
             this.posy = 0;
             this.sensy = 1;
             terrain.$element.addClass("vert");
-            setTimeout(
-                function(){
-                    terrain.$element.removeClass("vert")
-                },100
-            );
+            setTimeout(function(){terrain.$element.removeClass("vert")},100);
         }
 
         

@@ -48,6 +48,10 @@ body{
     background-color: white;
 }
 
+.rtouche{
+	background-color: #0f0 !important;
+}
+
 #rgauche{
     left: 0;
 	top: 50%;
