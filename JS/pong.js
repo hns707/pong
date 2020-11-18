@@ -8,14 +8,11 @@ let haut=parseInt($("#balle").css("top"));*/
 //Script déplacement de la balle
 setInterval(function(){
 	
-	balle.collision();
     balle.bouge();
 	
 	
 	raquetteGauche.bouge();
-	raquetteGauche.majGCSS(), raquetteGauche.rebondG();
 	raquetteDroite.bouge();
-	raquetteDroite.majDCSS(), raquetteDroite.rebondD();
 	
 }, 10);
 

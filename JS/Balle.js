@@ -21,6 +21,7 @@ class Balle{
         // Actualisation du CSS
         $("#balle").css("left",this.posx);
         $("#balle").css("top",this.posy);
+		balle.collision();
     }
     collision(){
         // Collisions avec le terrain

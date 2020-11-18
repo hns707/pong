@@ -13,23 +13,27 @@ class Raquette{
         window.addEventListener("keydown", function (event) {
             if (event.defaultPrevented) { return}
             if (event.key === 'z'){
-                raquetteGauche.speedy=-4;
+                raquetteGauche.speedy=-2;
             }else if (event.key === 's'){
-                raquetteGauche.speedy=4;
+                raquetteGauche.speedy=2;
             }
             if (event.key === 'p'){
-                raquetteDroite.speedy=-4;
+                raquetteDroite.speedy=-2;
             }else if (event.key === 'm'){
-                raquetteDroite.speedy=4;
+                raquetteDroite.speedy=2;
             }
             event.preventDefault();
         }, true);
 
         window.addEventListener("keyup", function (event) {
             if (event.defaultPrevented) { return}
-            raquetteGauche.speedy=0;
-            raquetteDroite.speedy=0;
-            event.preventDefault();
+            if (event.key === 'z' || event.key === 's'){
+                raquetteGauche.speedy=0;
+            }
+                
+            if (event.key === 'p' || event.key === 'm'){
+                raquetteDroite.speedy=0;
+			}
         }, true);
 
         raquetteGauche.posy = raquetteGauche.posy + raquetteGauche.speedy;
@@ -47,6 +51,12 @@ class Raquette{
         else if (raquetteDroite.posy < 0){
             raquetteDroite.posy = 0;
         }
+		
+		raquetteGauche.majGCSS();
+		raquetteDroite.majDCSS();
+		raquetteGauche.rebondG();
+		raquetteDroite.rebondD();
+		
     }
 
 
