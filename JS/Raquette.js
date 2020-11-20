@@ -10,11 +10,13 @@ class Raquette{
     }
 
     bouge(){
+		
+		// Touches
         window.addEventListener("keydown", function (event) {
             if (event.defaultPrevented) { return}
-            if (event.key === 'z'){
+            if (event.key === 'a'){
                 raquetteGauche.speedy=-2;
-            }else if (event.key === 's'){
+            }else if (event.key === 'q'){
                 raquetteGauche.speedy=2;
             }
             if (event.key === 'p'){
@@ -27,7 +29,7 @@ class Raquette{
 
         window.addEventListener("keyup", function (event) {
             if (event.defaultPrevented) { return}
-            if (event.key === 'z' || event.key === 's'){
+            if (event.key === 'a' || event.key === 'q'){
                 raquetteGauche.speedy=0;
             }
                 
@@ -35,8 +37,11 @@ class Raquette{
                 raquetteDroite.speedy=0;
 			}
         }, true);
-
+		
         raquetteGauche.posy = raquetteGauche.posy + raquetteGauche.speedy;
+		
+		
+		// Bords du terrain
         if (raquetteGauche.posy > terrain.hauteur - raquetteGauche.hauteur){
             raquetteGauche.posy = terrain.hauteur - raquetteGauche.hauteur;
         }
