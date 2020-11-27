@@ -5,8 +5,8 @@ class Balle{
         this.hauteur=$element.height();
         this.posy=parseInt($("#balle").css("top"));
         this.posx=parseInt($("#balle").css("left"));
-        this.speedx=4;
-        this.speedy=2
+        this.speedx=2;
+        this.speedy=1;
         this.sensx=1;
         this.sensy=1;
         this.diametre=15;
@@ -26,15 +26,23 @@ class Balle{
     collision(){
         // Collisions avec le terrain
         if(this.posx > terrain.largeur - this.diametre){
-            this.posx = terrain.largeur - this.diametre;
+            this.posx = terrain.largeur / 2;
+			this.posy = terrain.hauteur / 2;
             this.sensx = -1;
+			jgauche.addScore(10);
+			this.speedx=2;
+			this.speedy=1;
             terrain.$element.addClass("rouge");
             setTimeout(function(){terrain.$element.removeClass("rouge")},1000 );
         }
 
         else if(this.posx < 0 ){
-            this.posx = 0;
+            this.posx = terrain.largeur / 2;
+			this.posy = terrain.hauteur / 2;
             this.sensx = 1;
+			jdroite.addScore(10);
+			this.speedx=2;
+			this.speedy=1;
             terrain.$element.addClass("rouge");
             setTimeout(function(){terrain.$element.removeClass("rouge")},1000);
         }

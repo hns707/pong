@@ -22,18 +22,19 @@ let terrain=new Terrain($("#terrain"));
 let balle=new Balle($("#balle"));
 let raquetteGauche=new Raquette($("#rgauche"));
 let raquetteDroite=new Raquette($("#rdroite"));
+let jgauche=new Joueur($("#jgauche"));
+let jdroite=new Joueur($("#jdroite"));
+
+
 
 // Position X fixe
 raquetteGauche.posx = 20;
 raquetteDroite.posx = terrain.largeur - 20 - raquetteDroite.largeur;
 
-// Position et sens de départ de la balle aléatoire
-balle.posx = Math.random() * terrain.largeur;
-balle.posy = Math.random() * terrain.hauteur;
+// Sens de départ de la balle aléatoire
 balle.sensx = balle.sensx * (Math.random() < 0.5) ? -1 : 1;
 balle.sensy = balle.sensy * (Math.random() < 0.5) ? -1 : 1;
-console.log(terrain);
-console.log(raquetteGauche);
+
 
 
 
