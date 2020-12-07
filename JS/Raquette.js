@@ -87,8 +87,8 @@ class Raquette{
                 setTimeout(function(){raquetteGauche.$element.removeClass("rtouche")},100);
                 balle.posx += balle.diametre / 2;
                 balle.sensx = 1;
-				if(balle.speedx < 5){balle.speedx += 1};
-				if(balle.speedx < 5){balle.speedy += 0.5};
+				if(balle.speedx < 50){balle.speedx += 1};
+				if(balle.speedx < 50){balle.speedy += 0.5};
             }
         }
     }
@@ -102,8 +102,8 @@ class Raquette{
                 setTimeout(function(){raquetteDroite.$element.removeClass("rtouche")},100);
                 balle.posx -= balle.diametre / 2;
                 balle.sensx = -1;
-				if(balle.speedx < 5){balle.speedx += 1};
-				if(balle.speedx < 5){balle.speedy += 0.5};
+				if(balle.speedx < 50){balle.speedx += 1};
+				if(balle.speedx < 50){balle.speedy += 0.5};
             }
         }
     }
